@@ -2,6 +2,7 @@
 *.o
 
 .vscode/
+.out/
 
 NOTES.md
 PROJECT_STRUCTURE.md

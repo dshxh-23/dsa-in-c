@@ -1,3 +1,5 @@
+#include "linked_list.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -6,18 +8,6 @@ typedef struct Node {
     int data;
     struct Node* next;
 } Node;
-
-// Function prototypes
-Node* createNode(int data);
-void insertAtBeginning(Node** headRef, int data);
-void insertAtEnd(Node** headRef, int data);
-void insertAtPosition(Node** headRef, int data, int position);
-void deleteAtBeginning(Node** headRef);
-void deleteAtEnd(Node** headRef);
-void deleteAtPosition(Node** headRef, int position);
-int search(Node* head, int key);
-void display(Node* head);
-int countNodes(Node* head);
 
 // Create a new node
 Node* createNode(int data) {
@@ -159,42 +149,4 @@ int countNodes(Node* head) {
         head = head->next;
     }
     return count;
-}
-
-
-// Driver code (for quick testing)
-int main() {
-
-    Node* head = NULL;
-
-    insertAtEnd(&head, 10);
-    insertAtEnd(&head, 20);
-    insertAtEnd(&head, 30);
-    display(head);
-
-    insertAtBeginning(&head, 5);
-    display(head);
-
-    insertAtPosition(&head, 15, 3);
-    display(head);
-
-    printf("Count: %d\n", countNodes(head));
-
-    int key = 20;
-    int pos = search(head, key);
-    if (pos != -1)
-        printf("Element %d found at position %d\n", key, pos);
-    else
-        printf("Element %d not found\n", key);
-
-    deleteAtBeginning(&head);
-    display(head);
-
-    deleteAtEnd(&head);
-    display(head);
-
-    deleteAtPosition(&head, 2);
-    display(head);
-
-    return 0;
 }
