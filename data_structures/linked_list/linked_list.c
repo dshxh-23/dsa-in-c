@@ -3,15 +3,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Node structure
-typedef struct Node {
+// Node structure 14
+typedef struct ll_node {
     int data;
-    struct Node* next;
-} Node;
+    struct ll_node* next;
+} ll_node;
 
 // Create a new node
-Node* createNode(int data) {
-    Node* newNode = (Node*) malloc(sizeof(Node));
+ll_node* ll_create_node(int data) {
+    ll_node* newNode = (ll_node*) malloc(sizeof(ll_node));
     if (!newNode) {
         printf("Memory allocation failed!\n");
         exit(1);
@@ -22,37 +22,37 @@ Node* createNode(int data) {
 }
 
 // Insert at beginning
-void insertAtBeginning(Node** headRef, int data) {
-    Node* newNode = createNode(data);
+void ll_push_front(ll_node** headRef, int data) {
+    ll_node* newNode = ll_create_node(data);
     newNode->next = *headRef;
     *headRef = newNode;
 }
 
 // Insert at end
-void insertAtEnd(Node** headRef, int data) {
-    Node* newNode = createNode(data);
+void ll_push_back(ll_node** headRef, int data) {
+    ll_node* newNode = ll_create_node(data);
     if (*headRef == NULL) {
         *headRef = newNode;
         return;
     }
-    Node* temp = *headRef;
+    ll_node* temp = *headRef;
     while (temp->next != NULL)
         temp = temp->next;
     temp->next = newNode;
 }
 
 // Insert at specific position (1-based index)
-void insertAtPosition(Node** headRef, int data, int position) {
+void ll_insert_at(ll_node** headRef, int data, int position) {
     if (position < 1) {
         printf("Invalid position!\n");
         return;
     }
     if (position == 1) {
-        insertAtBeginning(headRef, data);
+        ll_push_front(headRef, data);
         return;
     }
-    Node* newNode = createNode(data);
-    Node* temp = *headRef;
+    ll_node* newNode = ll_create_node(data);
+    ll_node* temp = *headRef;
     for (int i = 1; temp != NULL && i < position - 1; i++)
         temp = temp->next;
     if (temp == NULL) {
@@ -65,18 +65,18 @@ void insertAtPosition(Node** headRef, int data, int position) {
 }
 
 // Delete at beginning
-void deleteAtBeginning(Node** headRef) {
+void ll_pop_front(ll_node** headRef) {
     if (*headRef == NULL) {
         printf("List is empty!\n");
         return;
     }
-    Node* temp = *headRef;
+    ll_node* temp = *headRef;
     *headRef = (*headRef)->next;
     free(temp);
 }
 
 // Delete at end
-void deleteAtEnd(Node** headRef) {
+void ll_pop_back(ll_node** headRef) {
     if (*headRef == NULL) {
         printf("List is empty!\n");
         return;
@@ -86,7 +86,7 @@ void deleteAtEnd(Node** headRef) {
         *headRef = NULL;
         return;
     }
-    Node* temp = *headRef;
+    ll_node* temp = *headRef;
     while (temp->next->next != NULL)
         temp = temp->next;
     free(temp->next);
@@ -94,29 +94,29 @@ void deleteAtEnd(Node** headRef) {
 }
 
 // Delete at specific position
-void deleteAtPosition(Node** headRef, int position) {
+void ll_delete_at(ll_node** headRef, int position) {
     if (*headRef == NULL) {
         printf("List is empty!\n");
         return;
     }
     if (position == 1) {
-        deleteAtBeginning(headRef);
+        ll_pop_front(headRef);
         return;
     }
-    Node* temp = *headRef;
+    ll_node* temp = *headRef;
     for (int i = 1; temp != NULL && i < position - 1; i++)
         temp = temp->next;
     if (temp == NULL || temp->next == NULL) {
         printf("Position out of range!\n");
         return;
     }
-    Node* delNode = temp->next;
+    ll_node* delNode = temp->next;
     temp->next = temp->next->next;
     free(delNode);
 }
 
 // Search an element
-int search(Node* head, int key) {
+int ll_search(ll_node* head, int key) {
     int pos = 1;
     while (head != NULL) {
         if (head->data == key)
@@ -128,12 +128,12 @@ int search(Node* head, int key) {
 }
 
 // Display linked list
-void display(Node* head) {
+void ll_display(ll_node* head) {
     if (head == NULL) {
         printf("List is empty!\n");
         return;
     }
-    Node* temp = head;
+    ll_node* temp = head;
     while (temp != NULL) {
         printf("%d -> ", temp->data);
         temp = temp->next;
@@ -142,7 +142,7 @@ void display(Node* head) {
 }
 
 // Count nodes
-int countNodes(Node* head) {
+int ll_count_nodes(ll_node* head) {
     int count = 0;
     while (head != NULL) {
         count++;

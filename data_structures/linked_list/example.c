@@ -3,36 +3,36 @@
 
 int main(void) {
 
-    Node* head = NULL;
+    ll_node* head = NULL;
 
-    insertAtEnd(&head, 10);
-    insertAtEnd(&head, 20);
-    insertAtEnd(&head, 30);
-    display(head);
+    ll_push_back(&head, 10);
+    ll_push_back(&head, 20);
+    ll_push_back(&head, 30);
+    ll_display(head);
 
-    insertAtBeginning(&head, 5);
-    display(head);
+    ll_push_front(&head, 5);
+    ll_display(head);
 
-    insertAtPosition(&head, 15, 3);
-    display(head);
+    ll_insert_at(&head, 15, 3);
+    ll_display(head);
 
-    printf("Count: %d\n", countNodes(head));
+    printf("Count: %d\n", ll_count_nodes(head));
 
     int key = 20;
-    int pos = search(head, key);
+    int pos = ll_search(head, key);
     if (pos != -1)
         printf("Element %d found at position %d\n", key, pos);
     else
         printf("Element %d not found\n", key);
 
-    deleteAtBeginning(&head);
-    display(head);
+    ll_pop_front(&head);
+    ll_display(head);
 
-    deleteAtEnd(&head);
-    display(head);
+    ll_pop_front(&head);
+    ll_display(head);
 
-    deleteAtPosition(&head, 2);
-    display(head);
+    ll_delete_at(&head, 2);
+    ll_display(head);
 
     return 0;
 }
