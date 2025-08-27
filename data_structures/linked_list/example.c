@@ -3,7 +3,7 @@
 
 int main(void) {
 
-    printf("\n\n============================| ARRAY EXAMPLE |============================\n\n");
+    printf("\n\n============================| LINKED LIST EXAMPLE |============================\n\n");
 
     ll_node* head = NULL;
 
