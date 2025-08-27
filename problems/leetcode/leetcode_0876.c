@@ -1,6 +1,4 @@
-/* 
-LEET CODE 876: Middle of the Linked List
-*/
+/* LEET CODE #876: Middle of the Linked List */
 
 #include <stdlib.h>
 #include <stdio.h>
