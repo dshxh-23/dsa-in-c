@@ -3,6 +3,8 @@
 
 int main(void) {
 
+    printf("\n\n============================| ARRAY EXAMPLE |============================\n\n");
+
     ll_node* head = NULL;
 
     ll_push_back(&head, 10);
